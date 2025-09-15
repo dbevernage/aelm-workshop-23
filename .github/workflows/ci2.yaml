@@ -7,12 +7,9 @@ on:
       - '**'
 
 env:
-  DOCKER_REPOSITORY: tourna
+  DOCKER_REPOSITORY: docker.io/tourna
   DOCKER_IMAGE: aelm-workshop-23
   GOLANG_VERSION: 1.24.x
-  # Use docker.io for Docker Hub if empty
-  # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
 
 
 jobs:
@@ -95,7 +92,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          push: ${{ github.event_name != 'pull_request' }}
+        #   push: ${{ github.event_name != 'pull_request' }}
+          push: false
           tags: |
             ${{ steps.meta.outputs.tags }}
         #   labels: ${{ steps.meta.outputs.labels }}

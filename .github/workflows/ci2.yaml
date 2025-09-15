@@ -95,7 +95,7 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.DOCKER_REPOSITORY }}:latest
             # ${{ steps.meta.outputs.tags }}
-        #   labels: ${{ steps.meta.outputs.labels }}
-        #   cache-from: type=gha
-        #   cache-to: type=gha,mode=max
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 

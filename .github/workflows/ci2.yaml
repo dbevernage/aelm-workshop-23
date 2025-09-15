@@ -20,7 +20,7 @@ jobs:
       contents: read
       packages: write
       # This is used to complete the identity challenge
-      # with sigstore/fulcio when running outside of PRs.
+      # with sigstore/fulcio when running outside of PRs.x²
       id-token: write
 
     steps:
@@ -100,9 +100,3 @@ jobs:
         #   cache-from: type=gha
         #   cache-to: type=gha,mode=max
 
-      - name: Push Docker image
-        uses: docker/push-action@v2.0.0
-        if: github.event_name != 'pull_request' 
-        with:  
-          name: ${{ env.DOCKER_REPOSITORY }}/${{ env.DOCKER_IMAGE }}
-          
